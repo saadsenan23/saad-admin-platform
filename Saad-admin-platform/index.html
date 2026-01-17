@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saad Admin Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1e293b;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 40px;
+      z-index: 1000;
+    }
+
+    header a {
+      position: relative;
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 4px 0;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover احترافي */
+    header a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2563eb, #60a5fa);
+      transition: width 0.3s ease;
+    }
+
+    header a:hover {
+      color: #2563eb;
+    }
+
+    header a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= SECTIONS ================= */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 110px 20px 60px;
+    }
+
+    /* ================= HERO ================= */
+  /* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 20px 40px; /* زوّد padding-top من 100px → 150px */
+}
+.hero img {
+  max-width: 200px; /* حجم الصورة */
+  margin-bottom: 20px; /* مسافة بين الصورة والعنوان */
+}
+
+.hero h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.hero h1 span {
+  color: #2563eb;
+}
+
+.hero .cta {
+  margin-top: 30px;
+}
+
+    .btn {
+      padding: 12px 26px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      margin: 0 8px;
+      display: inline-block;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37,99,235,0.3);
+    }
+
+    .btn.outline {
+      background: transparent;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+    }
+
+    .btn.outline:hover {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    /* ================= CONTENT ================= */
+    .content {
+      max-width: 800px;
+    }
+
+    .content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #2563eb;
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    /* ================= FAQ ================= */
+    .faq {
+      width: 100%;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .faq-question {
+      padding: 18px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1e293b;
+    }
+
+    .faq-question span {
+      font-size: 22px;
+      color: #2563eb;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 22px;
+      color: #475569;
+      line-height: 1.7;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 22px 18px;
+    }
+
+    .faq-item.active .faq-question span {
+      transform: rotate(45deg);
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      header {
+        gap: 20px;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#faq">FAQ</a>
+</header>
+
+<!-- HOME -->
+ <section id="home" class="hero">
+  <div>
+    <img src="assets/gradient-o-logo-pack_23-2148881361.png">
+    <h1>Saad <span>Admin Platform</span></h1>
+
+    <div class="cta">
+      <a href="login.html" class="btn">Login</a>
+      <a href="register.html" class="btn outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="content">
+    <h2>About Saad Admin Platform</h2>
+    <p>
+      Saad Admin Platform is a modern SaaS dashboard built to manage users,
+      analytics, revenue, and reports with high performance and security.
+      Designed for startups and enterprise-level companies.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="content">
+    <h2>Contact Us</h2>
+    <p>
+      For business inquiries or support:<br><br>
+      <strong>support@saadadminplatform.com</strong>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq">
+    <h2 style="text-align:center;margin-bottom:30px;">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What is Saad Admin Platform?
+        <span>+</span>
+      </div>
+      <div class="faq-answer">
+        Saad Admin Platform is a SaaS dashboard for managing users, analytics,
+        revenue tracking, and reports in one place.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Is this platform suitable for startups?
+        <span>+</span>
+      </div>
+      <div class="faq-answer">
+        Yes, it is designed to scale from small startups to large enterprises.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I customize the dashboard?
+        <span>+</span>
+      </div>
+      <div class="faq-answer">
+        Absolutely. You can customize themes, charts, roles, and permissions.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Users | Saad Admin Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Main Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- SIDEBAR -->
+   <!-- زر فتح القائمة -->
+<button id="menuBtn" class="menu-btn">☰</button>
+
+<!-- السايد منيو -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">✕</button>
+
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="users.html">Users</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="settings.html">Settings</a></li>
+     <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+  </ul>
+</div>
+
+
+<!-- المحتوى الرئيسي -->
+<div class="dashboard">
+  <main class="main">
+
+    <h2 style="margin-bottom: 25px;">Users Management</h2>
+
+    <!-- جدول المستخدمين -->
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Saad Sinan</td>
+          <td>saad@admin.com</td>
+          <td>
+            <select>
+              <option>Admin</option>
+              <option>User</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Ahmad Ali</td>
+          <td>ahmad@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lina Hassan</td>
+          <td>lina@mail.com</td>
+          <td>
+            <select>
+              <option>Viewer</option>
+              <option>User</option>
+              <option>Admin</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Ahmad ramzi</td>
+          <td>ahd2@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Messi Ali</td>
+          <td>mad3@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Abbas Ali</td>
+          <td>hmad4@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Sami Ss</td>
+          <td>aad55@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Kosay Ahmad</td>
+          <td>a3ad22@mail.com</td>
+          <td>
+            <select>
+              <option>User</option>
+              <option>Admin</option>
+              <option>Viewer</option>
+            </select>
+          </td>
+          <td>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+</div>
+
+<!-- JavaScript -->
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const closeMenu = document.getElementById("closeMenu");
+const overlay = document.getElementById("overlay");
+
+menuBtn.addEventListener("click", () => {
+  sideMenu.classList.add("active");
+  overlay.classList.add("active");
+  
+});
+
+closeMenu.addEventListener("click", closeSideMenu);
+overlay.addEventListener("click", closeSideMenu);
+
+function closeSideMenu() {
+  sideMenu.classList.remove("active");
+  overlay.classList.remove("active");
+}
+const users = [
+  { name: "Admin", email: "admin@test.com", role: "Admin" },
+  { name: "User", email: "user@test.com", role: "User" }
+];
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang  = localStorage.getItem('lang');
+  const sideMenuEl = document.getElementById('sideMenu');
+
+  // ===== APPLY THEME =====
+  if(savedTheme === 'dark'){
+    document.body.classList.add('dark-mode');
+    if(sideMenuEl) sideMenuEl.classList.add('dark-mode');
+  }
+
+  // ===== APPLY LANGUAGE =====
+  if(savedLang === 'ar'){
+    document.body.dir = 'rtl';
+  } else {
+    document.body.dir = 'ltr';
+  }
+});
+</script>
+</body>
+</html>

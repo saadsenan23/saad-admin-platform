@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Saad Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+   <!-- زر فتح القائمة -->
+<button id="menuBtn" class="menu-btn">☰</button>
+
+<!-- السايد منيو -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">✕</button>
+
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="users.html">Users</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="settings.html">Settings</a></li>
+     <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+  </ul>
+</div>
+
+<!-- خلفية شفافة -->
+
+
+   
+
+  <!-- MAIN -->
+  <main class="main">
+
+    
+      <h1>Dashboard</h1>
+  
+
+    <!-- CARDS -->
+    <section class="cards">
+      <div class="card">
+        <h4>Users</h4>
+        <h1>1,248</h1>
+      </div>
+
+      <div class="card">
+        <h4>Revenue</h4>
+        <h1>$34,200</h1>
+      </div>
+
+      <div class="card">
+        <h4>Growth</h4>
+        <h1>+18%</h1>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+   <section class="charts">
+  <div class="chart-box">
+    <h3>Monthly Revenue</h3>
+    <canvas id="revenueChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>User Growth</h3>
+    <canvas id="usersChart"></canvas>
+  </div>
+</section>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/charts.js"></script>
+
+  </main>
+
+</div>
+
+<script src="js/guard.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang  = localStorage.getItem('lang');
+  const sideMenuEl = document.getElementById('sideMenu');
+
+  // ===== APPLY THEME =====
+  if(savedTheme === 'dark'){
+    document.body.classList.add('dark-mode');
+    if(sideMenuEl) sideMenuEl.classList.add('dark-mode');
+  }
+
+  // ===== APPLY LANGUAGE =====
+  if(savedLang === 'ar'){
+    document.body.dir = 'rtl';
+  } else {
+    document.body.dir = 'ltr';
+  }
+});
+</script>
+</body>
+</html>

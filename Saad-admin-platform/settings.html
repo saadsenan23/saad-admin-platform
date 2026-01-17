@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings | Saad Admin Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<button id="menuBtn" class="menu-btn">☰</button>
+
+<!-- السايد منيو -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">✕</button>
+
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="users.html">Users</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="settings.html">Settings</a></li>
+     <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+  </ul>
+</div>
+
+<div class="dashboard">
+  <main class="main">
+
+    <h2 style="margin-bottom:30px;">Account Settings</h2>
+
+    <!-- PROFILE -->
+    <div class="card" style="margin-bottom:30px;">
+      <h4>Profile</h4>
+      <input type="text" placeholder="Full Name" style="margin-top:12px;">
+      <input type="email" placeholder="Email" disabled style="margin-top:12px;">
+      <button class="btn" style="margin-top:16px;">Save Changes</button>
+    </div>
+
+    <!-- SECURITY -->
+    <div class="card" style="margin-bottom:30px;">
+      <h4>Security</h4>
+      <input type="password" placeholder="New Password" style="margin-top:12px;">
+      <label style="display:flex;align-items:center;gap:10px;margin-top:14px;">
+        <input type="checkbox"> Enable Two-Factor Authentication
+      </label>
+      <button class="btn outline" style="margin-top:16px;">Logout from all devices</button>
+    </div>
+
+    <!-- PREFERENCES -->
+    <!-- PREFERENCES -->
+<div class="card" style="margin-bottom:30px;">
+  <h4>Preferences</h4>
+
+  <label for="langSelect" style="margin-top:12px;display:block;">Language</label>
+  <select id="langSelect" style="margin-top:6px;">
+    <option value="en">English</option>
+    
+  </select>
+
+  <label for="themeSelect" style="margin-top:12px;display:block;">Theme</label>
+  <select id="themeSelect" style="margin-top:6px;">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+
+  <button id="savePrefs" class="btn" style="margin-top:16px;">Save Preferences</button>
+</div>
+
+    <!-- SYSTEM INFO -->
+    <div class="card">
+      <h4>System Info</h4>
+      <p>Role: <strong>Admin</strong></p>
+      <p>Plan: <strong>Pro</strong></p>
+      <p>Status: <strong style="color:#16a34a;">Active</strong></p>
+      <p>Created At: 2025-10-01</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const closeMenu = document.getElementById("closeMenu");
+const overlay = document.getElementById("overlay");
+
+menuBtn.addEventListener("click", () => {
+  sideMenu.classList.add("active");
+  overlay.classList.add("active");
+  
+});
+
+closeMenu.addEventListener("click", closeSideMenu);
+overlay.addEventListener("click", closeSideMenu);
+
+function closeSideMenu() {
+  sideMenu.classList.remove("active");
+  overlay.classList.remove("active");
+}
+const users = [
+  { name: "Admin", email: "admin@test.com", role: "Admin" },
+  { name: "User", email: "user@test.com", role: "User" }
+];
+
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "login.html";
+}
+
+</script>
+<script>
+const saveBtn = document.getElementById('savePrefs');
+const langSelect = document.getElementById('langSelect');
+const themeSelect = document.getElementById('themeSelect');
+const sideMenuEl = document.getElementById('sideMenu');
+
+saveBtn.addEventListener('click', () => {
+
+  // ===== LANGUAGE =====
+  if(langSelect.value === 'ar'){
+    document.body.dir = 'rtl';
+    localStorage.setItem('lang', 'ar');
+  } else {
+    document.body.dir = 'ltr';
+    localStorage.setItem('lang', 'en');
+  }
+
+  // ===== THEME =====
+  if(themeSelect.value === 'dark'){
+    document.body.classList.add('dark-mode');
+    sideMenuEl.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-mode');
+    sideMenuEl.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+  }
+
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang  = localStorage.getItem('lang');
+  const sideMenuEl = document.getElementById('sideMenu');
+
+  // ===== APPLY THEME =====
+  if(savedTheme === 'dark'){
+    document.body.classList.add('dark-mode');
+    if(sideMenuEl) sideMenuEl.classList.add('dark-mode');
+  }
+
+  // ===== APPLY LANGUAGE =====
+  if(savedLang === 'ar'){
+    document.body.dir = 'rtl';
+  } else {
+    document.body.dir = 'ltr';
+  }
+});
+</script>
+</body>
+</html>

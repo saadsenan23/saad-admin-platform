@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reports | Saad Admin Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Main Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<button id="menuBtn" class="menu-btn">☰</button>
+
+<!-- السايد منيو -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">✕</button>
+
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="users.html">Users</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="settings.html">Settings</a></li>
+     <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+  </ul>
+</div>
+
+
+<!-- المحتوى الرئيسي -->
+<div class="dashboard">
+  <main class="main">
+
+    <h2 style="margin-bottom: 30px;">System Reports</h2>
+
+    <!-- كروت التقارير -->
+    <section class="cards">
+      <div class="card">
+        <h4>Total Reports</h4>
+        <p>128</p>
+      </div>
+
+      <div class="card">
+        <h4>Open Issues</h4>
+        <p class="sss">100</p>
+      </div>
+
+      <div class="card">
+        <h4>Resolved</h4>
+     <p class="sss">94</p>
+      </div>
+
+      <div class="card">
+        <h4>Critical</h4>
+        <p style="color:#dc2626;">6</p>
+      </div>
+    </section>
+
+    <!-- جدول التقارير -->
+    <table class="users-table" style="margin-top:40px;">
+      <thead>
+        <tr>
+          <th>Report ID</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>#RPT-1021</td>
+          <td>System Error</td>
+          <td style="color:#dc2626;font-weight:600;">Critical</td>
+          <td>2026-01-15</td>
+        </tr>
+
+        <tr>
+          <td>#RPT-1020</td>
+          <td>User Issue</td>
+          <td style="color:#f59e0b;font-weight:600;">Open</td>
+          <td>2026-01-14</td>
+        </tr>
+
+        <tr>
+          <td>#RPT-1018</td>
+          <td>Payment</td>
+          <td style="color:#16a34a;font-weight:600;">Resolved</td>
+          <td>2026-01-13</td>
+        </tr>
+
+        <tr>
+          <td>#RPT-1016</td>
+          <td>Security</td>
+          <td style="color:#16a34a;font-weight:600;">Resolved</td>
+          <td>2026-01-11</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+</div>
+
+<!-- JavaScript -->
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const closeMenu = document.getElementById("closeMenu");
+const overlay = document.getElementById("overlay");
+
+menuBtn.addEventListener("click", () => {
+  sideMenu.classList.add("active");
+  overlay.classList.add("active");
+  
+});
+
+closeMenu.addEventListener("click", closeSideMenu);
+overlay.addEventListener("click", closeSideMenu);
+
+function closeSideMenu() {
+  sideMenu.classList.remove("active");
+  overlay.classList.remove("active");
+}
+const users = [
+  { name: "Admin", email: "admin@test.com", role: "Admin" },
+  { name: "User", email: "user@test.com", role: "User" }
+];
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "login.html";
+}
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang  = localStorage.getItem('lang');
+  const sideMenuEl = document.getElementById('sideMenu');
+
+  // ===== APPLY THEME =====
+  if(savedTheme === 'dark'){
+    document.body.classList.add('dark-mode');
+    if(sideMenuEl) sideMenuEl.classList.add('dark-mode');
+  }
+
+  // ===== APPLY LANGUAGE =====
+  if(savedLang === 'ar'){
+    document.body.dir = 'rtl';
+  } else {
+    document.body.dir = 'ltr';
+  }
+});
+</script>
+</body>
+</html>
